@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import EmojiList from './EmojiList';
 import MainEmoji from './MainEmoji';
 import EmojiForm from './EmojiForm';
+import EmojiList from './EmojiList';
 
 class EmojiFetch extends Component {
   constructor(props) {
@@ -9,20 +9,14 @@ class EmojiFetch extends Component {
     this.state = {
       keys: [],
       values: [],
-      activePage: 1,
-      activeEmoji: -1,
-      search: '',
+      activeEmoji: -1, // MainEmoji
+      search: '',      // EmojiForm
+      activePage: 1,   // EmojiList
     };
 
-    this.handleSelectPage = this.handleSelectPage.bind(this);
     this.handleSelectEmoji = this.handleSelectEmoji.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-  }
-
-  handleSelectPage(eventKey) {
-    this.setState({
-      activePage: eventKey,
-    });
+    this.handleSelectPage = this.handleSelectPage.bind(this);
   }
 
   handleSelectEmoji(alt) {
@@ -32,30 +26,30 @@ class EmojiFetch extends Component {
     });
   }
 
-  handleSearch(value) {
-    value = value.toLowerCase();
-    this.setState({
-      search: value,
-    });
-    if(this.state.keys.indexOf(value) > -1) {
-      this.setState({
-        activeEmoji: this.state.keys.indexOf(value),
-      });
-    }
+  selectId(value) {
+    if(value.length === 0) return -1;
+    else if(this.state.keys.indexOf(value) > -1) return this.state.keys.indexOf(value);
     else {
       var found = this.state.keys.find(word => {
         return word.includes(value);
       });
-      if(found === 'undefined') {
-        this.setState({
-          activeEmoji: -1,
-        });
-      } else {
-        this.setState({
-          activeEmoji: this.state.keys.indexOf(found),
-        });
-      }
+      if(found === 'undefined') return -1;
+      else return this.state.keys.indexOf(found);
     }
+  }
+
+  handleSearch(value) {
+    value = value.toLowerCase();
+    this.setState({
+      search: value,
+      activeEmoji: this.selectId(value),
+    });
+  }
+
+  handleSelectPage(eventKey) {
+    this.setState({
+      activePage: eventKey,
+    });
   }
 
   componentDidMount() {
