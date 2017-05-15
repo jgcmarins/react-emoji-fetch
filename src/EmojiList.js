@@ -36,7 +36,7 @@ class EmojiList extends Component {
     for(var i = start ; i <= end ; i++) {
       var rows = this.prepareRows(i);
       tables.push(
-        <Table className="emojiList" responsive key={i}>
+        <Table responsive key={i}>
           <tbody>
             <tr>
               {rows}
