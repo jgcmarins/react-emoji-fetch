@@ -34,6 +34,7 @@ class EmojiForm extends Component {
             <InputGroup>
               <InputGroup.Addon>Search:</InputGroup.Addon>
               <FormControl
+                autoComplete="off"
                 type="text"
                 value={this.props.search}
                 placeholder="Type something that describes the emoji"

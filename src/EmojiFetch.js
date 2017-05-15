@@ -45,7 +45,7 @@ class EmojiFetch extends Component {
         return -1;
       }
       else {
-        this.setState({ searchStatus: 'success' });
+        this.setState({ searchStatus: 'warning' });
         return this.state.keys.indexOf(found);
       }
     }
