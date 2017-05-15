@@ -11,6 +11,7 @@ class EmojiFetch extends Component {
       values: [],
       activeEmoji: -1, // MainEmoji
       search: '',      // EmojiForm
+      searchStatus: null,// EmojiForm
       activePage: 1,   // EmojiList
     };
 
@@ -27,14 +28,26 @@ class EmojiFetch extends Component {
   }
 
   selectId(value) {
-    if(value.length === 0) return -1;
-    else if(this.state.keys.indexOf(value) > -1) return this.state.keys.indexOf(value);
+    if(value.length === 0) {
+      this.setState({ searchStatus: null });
+      return -1;
+    }
+    else if(this.state.keys.indexOf(value) > -1) {
+      this.setState({ searchStatus: 'success' });
+      return this.state.keys.indexOf(value);
+    }
     else {
       var found = this.state.keys.find(word => {
         return word.includes(value);
       });
-      if(found === 'undefined') return -1;
-      else return this.state.keys.indexOf(found);
+      if(this.state.keys.indexOf(found) === -1) {
+        this.setState({ searchStatus: 'error' });
+        return -1;
+      }
+      else {
+        this.setState({ searchStatus: 'success' });
+        return this.state.keys.indexOf(found);
+      }
     }
   }
 
@@ -80,6 +93,7 @@ class EmojiFetch extends Component {
         />
         <EmojiForm
           search={this.state.search}
+          searchStatus={this.state.searchStatus}
           onSearchChange={this.handleSearch}
         />
         <EmojiList

@@ -5,22 +5,22 @@ class EmojiForm extends Component {
   constructor(props) {
     super(props);
 
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.getValidationStateSearch = this.getValidationStateSearch.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
   }
 
   getValidationStateSearch() {
-    return null;
+    return this.props.searchStatus;
   }
 
   handleSearchChange(e) {
     e.preventDefault();
     this.props.onSearchChange(e.target.value);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
   }
 
   render() {
