@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.emojiFetch {
+  margin-top: -10px;
+}
+
+.pageHeader3 {
+  margin-top: -10px;
+}
+
+.pageHeader4 {
+  margin-top: -10px;
+}
+
+.mainEmoji {
+  margin-top: 0px;
+}
+
+.emojiTable {
+  margin-bottom: -10px;
+}
