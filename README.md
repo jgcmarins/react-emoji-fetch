@@ -2,7 +2,7 @@
 A react app that helps you find an emoji
 
 ## Live demo at
-#### [http://jgcmarins.xyz/react-emoji-fetch/](http://jgcmarins.xyz/react-emoji-fetch/)
+#### [http://joaomarins.com/react-emoji-fetch/](http://joaomarins.com/react-emoji-fetch/)
 
 ## Usage
 #### Installation
